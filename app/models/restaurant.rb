@@ -1,9 +1,9 @@
 class Restaurant < ActiveRecord::Base
   mount_uploader :image, ImageUploader
 
-	searchkick
+# 	searchkick
 
-	has_many :reviews
+  has_many :reviews, dependent: :destroy
 
 	validates :name, :address, :phone, :website, :image, presence: true
 
