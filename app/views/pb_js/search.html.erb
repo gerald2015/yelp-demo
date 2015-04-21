@@ -1,0 +1,11 @@
+<h2 align=center></h2>
+<% @pb_js.each do |pb_j| %>
+  <div class="row">
+    <h2><%= link_to pb_j.name, pb_j, class: 'btn btn-link' %></h2>
+    <p><%= image_tag pb_j.images[0].filename if image_tag pb_j.images[0].filename %></p> 
+    <p><%= pb_j.address %></p>
+    <p><%= pb_j.phone %></p>
+    <p><%= pb_j.website %></p>
+    <hr/>
+  </div>
+<% end %>

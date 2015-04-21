@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :filename %><br />
+  <%= f.file_field :filename %>
+  <% if f.object.filename and f.object.filename.file %>
+    <%= image_tag f.object.filename.url %>
+    <%#= f.object.filename.file.original_filename %></p>
+  <% end %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "remove", "#", class: "remove_fields btn btn-link" %>
+</fieldset>

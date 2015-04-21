@@ -1,0 +1,28 @@
+<h1>Listing peanut butters and jellys</h1>
+
+    <ul class="li-not-styled">
+    <% @pb_js.each do |pb_j| %>
+        <li class="row">
+          <div class="col-md-2"><%= image_tag pb_j.images[0].filename %></div>
+          <div class="col-md-4 col-md-offset-1">
+            <div class="row">
+              <p><%= link_to pb_j.name, pb_j, class: "btn btn-link" %></p>
+            </div>
+            <div class="row">
+              <%= render partial: "star_rating", locals: {avg_rating: rating_from_reviews(pb_j.reviews)} %>
+              <div class="star-rating" data-score=<%= rating_from_reviews(pb_j.reviews) %>></div>
+      <p><%= pb_j.reviews.length %> reviews</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <p><%= pb_j.address %></p>
+            <p><%= pb_j.phone %></p>
+            <p><%= pb_j.website %></p>
+          </div>
+          <hr>
+        </li>
+    <% end %>
+    </ul>
+<br>
+
+<%= link_to 'New Pb j', new_pb_j_path, class: "btn btn-link" %>

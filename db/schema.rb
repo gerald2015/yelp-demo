@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150420191100) do
+ActiveRecord::Schema.define(version: 20150421215716) do
 
-  create_table "restaurants", force: true do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "phone"
-    t.string   "website"
-    t.string   "image"
+  create_table "images", force: true do |t|
+    t.string   "filename"
+    t.integer  "pb_j_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+# Could not dump table "pb_js" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "reviews", force: true do |t|
     t.integer  "rating"
     t.text     "comment"
     t.integer  "user_id"
-    t.integer  "restaurant_id"
+    t.integer  "pb_j_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

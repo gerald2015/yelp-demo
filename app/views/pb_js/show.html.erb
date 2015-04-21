@@ -1,0 +1,99 @@
+<div class="row">
+  <div class="left-margin">
+    <p id="notice"><%= notice %></p>
+    <div class="row" style="border-bottom: #ccccc8">
+      <div class="pull-left col-md-5">
+        <h3>
+          <strong>
+            <%= @pb_j.name %>
+          </strong>
+        </h3>
+        <%= render partial: "star_rating", locals: {avg_rating: @avg_rating} %>
+        <div class="star-rating" data-score= <%= @avg_rating %> ></div>
+        <span><%= "#{@reviews.length} reviews" %></span>
+      </div>
+      <div class="pull-right col-md-5">
+        <%= link_to 'Write a review', new_pb_j_review_path(@pb_j), class: "btn btn-lg btn-primary" %>
+      </div>
+    </div>
+    <div class="row" style="display: flex">
+      <div style="display: inline">
+        <iframe
+                width="230"
+                height="230"
+                frameborder="0" style="border:0"
+                src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDNwJvZLMDNY7mXDdAO63CvXOqHpliKYvs
+                     &q=<%= @pb_j.address.parameterize %>&zoom=14">
+        </iframe>
+      </div>
+      <% @pb_j.images.each do |image| %>
+        <div style="display: inline; margin-right: -15px"><%= image_tag image.filename if image.filename.url %>    </div>
+      <% end %>
+      <hr/>
+    </div>
+    <div class="row main-part">
+      <div class="col-md-8" style="margin-top: 0px;">
+        <% if @reviews.blank? %>
+          <p>No reviews yet, be the first to write one!</p>
+        <% else %>
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="col-md-3"></th>
+                <th class="col-md-9"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @reviews.each do |review| %>
+              <tr>
+                <td>
+                  <h4>
+                    <%= "#{review.user.first_name.capitalize} #{review.user.last_name.capitalize[0]}." %>
+                  </h4>
+                  <p><%= review.created_at.strftime("%-m/%-d/%y") %></p>
+                </td>
+                <td>
+                  <div class="star-rating" data-score= <%= review.rating %> ></div>
+                  <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe  if review.comment%></p>
+
+                  <% if user_signed_in? %>
+                    <% if (review.user == current_user) %>
+                      <%= link_to "Edit", edit_pb_j_review_path(@pb_j, review) %>
+                      <%= link_to "Delete", pb_j_review_path(@pb_j, review), method: :delete %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      </div>
+      <div class="col-md-4 col-md-offset-8">
+        <p>
+          <strong>Description: </strong>
+          <%= @pb_j.description if @pb_j.description %>
+        </p>
+        <p>
+          <strong>Address or Mail:</strong>
+          <%= @pb_j.address if @pb_j.address %>
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          <%= @pb_j.phone if @pb_j.phone %>
+        </p>
+
+        <p>
+          <strong>Website:</strong>
+          <%= link_to @pb_j.website, @pb_j.website if @pb_j.website %>
+        </p>
+      </div>
+
+    </div>
+    <div class="row">
+      <%= link_to 'Edit', edit_pb_j_path(@pb_j), class: "btn btn-link" %>
+      <%= link_to 'Back', pb_js_path, class: "btn btn-link" %>
+    </div>
+  </div>
+</div>

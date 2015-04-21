@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
-  before_action :set_restaurant
+  before_action :set_pb_j
   before_action :authenticate_user!
   # before_action :check_user, only: [:edit, :update, :destroy]
 
@@ -26,11 +26,11 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.user_id = current_user.id
-    @review.restaurant_id = @restaurant.id
+    @review.pb_j_id = @pb_j.id
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to @restaurant, notice: 'Review was successfully created.' }
+        format.html { redirect_to @pb_j, notice: 'Review was successfully created.' }
         format.json { render action: 'show', status: :created, location: @review }
       else
         format.html { render action: 'new' }
@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @restaurant, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @pb_j, notice: 'Review was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to restaurant_path(@restaurant), notice: 'Review was successfully destroyed.'}
+      format.html { redirect_to pb_j_path(@pb_j), notice: 'Review was successfully destroyed.'}
       format.json { head :no_content }
     end
   end
@@ -69,8 +69,8 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:restaurant_id])
+    def set_pb_j
+      @pb_j = PbJ.find(params[:pb_j_id])
     end
 
     # def check_user

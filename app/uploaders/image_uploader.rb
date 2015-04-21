@@ -7,11 +7,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-#   if Rails.env.production?
+#   storage :file
   storage :dropbox
-#   else
-#     storage :file
-#   end
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -30,16 +27,15 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   process :resize_to_fit => [200, 300]
-  # process :scale => [200, 300]
   #
   # def scale(width, height)
   #   # do something
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :thumb do
+    process :resize_to_fit => [50, 50]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

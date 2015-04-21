@@ -1,0 +1,8 @@
+<div id="star-rating">
+  <span class="rating">
+    <% 5.downto(1) do |count| %>
+    <span id="rating-input-1-<%= count %>" 
+          class="<%= avg_rating < count ? 'not_rated_star' : 'rated_star' %>"></span>
+    <% end %>
+  </span>      
+</div>
