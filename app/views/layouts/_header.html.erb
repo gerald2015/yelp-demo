@@ -21,8 +21,9 @@
       <%= form_tag search_pb_js_path, method: :get, class: "navbar-form navbar-left" do %>
         <p>
           <%= text_field_tag :search, params[:search], class: "form-control" %>
-          <button class="btn btn-default" type="button">Search<button>
-          <%#= submit_tag "Search", name: nil, class: "btn btn-default" %>
+          <%= button_tag class: "btn btn-default", type: "button" do %>
+            Search
+          <% end %>
         </p>
       <% end %>
 
