@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421215716) do
+ActiveRecord::Schema.define(version: 20150421224732) do
 
   create_table "images", force: true do |t|
     t.string   "filename"
@@ -20,8 +20,15 @@ ActiveRecord::Schema.define(version: 20150421215716) do
     t.datetime "updated_at"
   end
 
-# Could not dump table "pb_js" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "pb_js", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "website"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "reviews", force: true do |t|
     t.integer  "rating"
