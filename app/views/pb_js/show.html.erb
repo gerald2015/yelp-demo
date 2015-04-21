@@ -36,13 +36,6 @@
           <p>No reviews yet, be the first to write one!</p>
         <% else %>
           <table class="table">
-            <thead>
-              <tr>
-                <th class="col-md-3"></th>
-                <th class="col-md-9"></th>
-              </tr>
-            </thead>
-            <tbody>
               <% @reviews.each do |review| %>
               <tr>
                 <td>
@@ -53,18 +46,17 @@
                 </td>
                 <td>
                   <div class="star-rating" data-score= <%= review.rating %> ></div>
-                  <p><%= h(review.comment).gsub(/\n/, '<br/>').html_safe  if review.comment%></p>
+                  <h5><%= h(review.comment).gsub(/\n/, '<br/>').html_safe  if review.comment%></h5>
 
                   <% if user_signed_in? %>
                     <% if (review.user == current_user) %>
-                      <%= link_to "Edit", edit_pb_j_review_path(@pb_j, review) %>
-                      <%= link_to "Delete", pb_j_review_path(@pb_j, review), method: :delete %>
+                      <%= link_to "Edit", edit_pb_j_review_path(@pb_j, review), class: "btn btn-link" %>
+                      <%= link_to "Delete", pb_j_review_path(@pb_j, review), class: "btn btn-link", method: :delete %>
                     <% end %>
                   <% end %>
                 </td>
               </tr>
             <% end %>
-          </tbody>
         </table>
       <% end %>
       </div>
