@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-$(document).on('page:load', function(){
+$(document).on('page:change', function(){
   $('form').on('click', '.remove_fields', function (event) {
     $(this).prev('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide()
