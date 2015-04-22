@@ -1,3 +1,28 @@
+$purple-brown: #A60040;
+$purple: #663399;
+$visited-link: #900060;
+$sadle-brown: #8B4513;
+$brown: hsl(27, 83%, 23%);
+$maroon: #800000;
+
+.btn-danger:hover,
+.btn-danger:focus,
+.btn-danger:active,
+.btn-danger.active { 
+  background-color: $maroon; 
+} //button
+
+.except-header {
+  a:visited {
+    color:  $sadle-brown !important;
+  }
+}
+.footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $brown;
+  
+}
 .main-part {
   background-color: #f5f5f1;
 }
@@ -10,8 +35,26 @@ h2 {
 .left-margin {
   margin-left:  80px;
 }
+
+.btn-custom {
+  background-color: $brown !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e9771a", endColorstr="#6b3509");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e9771a), to(#6b3509));
+  background-image: -moz-linear-gradient(top, #e9771a, #6b3509);
+  background-image: -ms-linear-gradient(top, #e9771a, #6b3509);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e9771a), color-stop(100%, #6b3509));
+  background-image: -webkit-linear-gradient(top, #e9771a, #6b3509);
+  background-image: -o-linear-gradient(top, #e9771a, #6b3509);
+  background-image: linear-gradient(#e9771a, #6b3509);
+  border-color: #6b3509 #6b3509 hsl(27, 83%, 16%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.46);
+  -webkit-font-smoothing: antialiased;
+}
 .btn-primary {
   color: #fff !important;
+  background-color: $purple-brown !important;
 }
 jumbotron {
   background-color: #FDF6DB;
@@ -30,7 +73,7 @@ ul.li-not-styled{
 .navbar-default {
   .container-fluid {
 /*                    #B80B03 */
-    background-color: #A60040;
+    background-color: $brown;
     .navbar-nav > li > a {
       color: #ffffff;
       font-size: 16px;
