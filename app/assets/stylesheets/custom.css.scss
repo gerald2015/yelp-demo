@@ -103,7 +103,7 @@ ul.li-not-styled{
     display: block;
     width: 16px;
     height: 16px;
-    background: url(asset-path('../assets/star.png')) 0 0;
+    background: url(asset-path('star.png')) 0 0;
 }
 
 .not_rated_star {
@@ -112,7 +112,7 @@ ul.li-not-styled{
     display: block;
     width: 16px;
     height: 16px;
-    background: url(asset-path('../assets/star.png')) 0 16px;
+    background: url(asset-path('star.png')) 0 16px;
 }
 
 .rating {
@@ -136,5 +136,5 @@ ul.li-not-styled{
     display: block;
     width: 16px;
     height: 16px;
-    background: url(asset-path('../assets/star.png'))  0 -16px;
+    background: url(asset-path('star.png'))  0 -16px;
 }
