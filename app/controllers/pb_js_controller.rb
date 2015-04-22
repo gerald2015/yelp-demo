@@ -20,6 +20,7 @@ class PbJsController < ApplicationController
   def show
     @reviews = Review.where(pb_j_id: @pb_j.id).order("created_at DESC")
     @avg_rating = rating_from_reviews(@reviews)
+    @review_exists = current_user.reviews.any? {|review| review.pb_j == @pb_j }
   end
 
   def new
