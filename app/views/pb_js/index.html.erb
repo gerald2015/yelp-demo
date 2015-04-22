@@ -12,7 +12,7 @@
             <div class="row">
               <%= render partial: "star_rating", locals: {avg_rating: rating_from_reviews(pb_j.reviews)} %>
               <div class="star-rating" data-score=<%= rating_from_reviews(pb_j.reviews) %>></div>
-      <p><%= pb_j.reviews.length %> reviews</p>
+              <p><%= pb_j.reviews.length %> reviews</p>
             </div>
           </div>
           <div class="col-md-4">
