@@ -4,6 +4,11 @@ $visited-link: #900060;
 $sadle-brown: #8B4513;
 $brown: hsl(27, 83%, 23%);
 $maroon: #800000;
+$white-grey: #f5f5f1;
+
+.negative-left-margin {
+  margin-left: -20px;
+}
 
 .btn-danger:hover,
 .btn-danger:focus,
@@ -24,7 +29,7 @@ $maroon: #800000;
   
 }
 .main-part {
-  background-color: #f5f5f1;
+  background-color: $white-grey;
 }
 h2 {
   font-weight: bold;
@@ -35,7 +40,6 @@ h2 {
 .left-margin {
   margin-left:  80px;
 }
-
 .btn-custom {
   background-color: $brown !important;
   background-repeat: repeat-x;
